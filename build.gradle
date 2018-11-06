@@ -1,0 +1,103 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.3.0'
+
+    ext.versions = [
+            'applicationId' : "com.wtr.wtr_app",
+            'minSdk'        : 19,
+            'compileSdk'    : 28,
+            'targetSdk'     : 28,
+
+            'versionCode'   : 1,
+            'versionName'   : '100',
+
+
+            'support'       : '28.0.0',
+            'constraint'    : '1.1.3',
+
+            'androidPlugin' : '3.1.3',
+            'rxJava'        : '2.2.2',
+            'rxAndroid'     : '2.1.0',
+            'dagger'        : '2.12',
+            'cicerone'      : '3.0.0',
+            'glide'         : '4.7.1',
+            'retrofit'      : '2.2.0',
+            'logInterceptor': '3.11.0',
+            'rxPermissions' : '0.10.2',
+            'moxy'          : '1.4.6',
+            'kotlin'        : '1.3.0'
+
+    ]
+
+    ext.dependency = [
+            android      : [
+                    'gradlePlugin': "com.android.tools.build:gradle:${versions.androidPlugin}"
+            ],
+            support      : [
+                    'appCompat' : "com.android.support:appcompat-v7:${versions.support}",
+                    'support'   : "com.android.support:support-v4:${versions.support}",
+                    'design'    : "com.android.support:design:${versions.support}",
+                    'constraint': "com.android.support.constraint:constraint-layout:${versions.constraint}",
+            ],
+            reactiveX    : [
+                    'rxJava'   : "io.reactivex.rxjava2:rxjava:${versions.rxJava}",
+                    'rxAndroid': "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}"
+            ],
+            dagger       : [
+                    'dagger'         : "com.google.dagger:dagger:${versions.dagger}",
+                    'daggerProcessor': "com.google.dagger:dagger-compiler:${versions.dagger}",
+            ],
+            cicerone     : [
+                    'cicerone': "ru.terrakok.cicerone:cicerone:${versions.cicerone}"
+            ],
+            glide        : [
+                    'glide': "com.github.bumptech.glide:glide:${versions.glide}"
+            ],
+            square       : [
+                    'retrofit'         : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+                    'converterJson'    : "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
+                    'logInterceptor'   : "com.squareup.okhttp3:logging-interceptor:${versions.logInterceptor}",
+                    'retrofitRxAdapter': "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}"
+            ],
+            rxPermissions: [
+                    'rxPermissions': "com.github.tbruyelle:rxpermissions:${versions.rxPermissions}"
+            ],
+            moxy         : [
+                    'moxy'         : "com.arello-mobile:moxy-app-compat:${versions.moxy}",
+                    'moxyProcessor': "com.arello-mobile:moxy-compiler:${versions.moxy}"
+            ],
+            kotlin       : [
+                    'gradlePlugin': "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+            ]
+    ]
+
+    ext.includes = [
+            'core': ":core",
+    ]
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath dependency.android.gradlePlugin
+        classpath dependency.kotlin.gradlePlugin
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
