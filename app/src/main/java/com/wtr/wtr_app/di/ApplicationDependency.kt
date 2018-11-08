@@ -1,7 +1,7 @@
 package com.wtr.wtr_app.di
 
 import com.wtr.core.di.modules.NavigationModule
-import com.wtr.wtr_app.App
+import com.wtr.wtr_app.app.App
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
@@ -12,18 +12,22 @@ import javax.inject.Singleton
     NavigationModule::class,
     ApplicationModule::class
 ])
-interface ApplicationComponent {
+interface AppComponent {
     fun inject(app: App)
+
+    fun mainComponent(): MainComponent.Builder
 
     @Component.Builder
     interface Builder {
         @BindsInstance
-        fun withApplication(app: App)
+        fun withApplication(app: App): Builder
+
+        fun build(): AppComponent
     }
 }
 
 @Module
-class ApplicationModule() {
+class ApplicationModule {
 
     @Singleton
     @Provides

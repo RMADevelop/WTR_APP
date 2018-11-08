@@ -10,6 +10,11 @@ abstract class BaseFragment : MvpAppCompatFragment() {
 
     abstract var layoutIdRes: Int
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        inject()
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
             inflater.inflate(layoutIdRes, container, false)
 
@@ -17,6 +22,8 @@ abstract class BaseFragment : MvpAppCompatFragment() {
         super.onViewCreated(view, savedInstanceState)
         renderView()
     }
+
+    protected open fun inject() {}
 
     protected fun renderView() {}
 }

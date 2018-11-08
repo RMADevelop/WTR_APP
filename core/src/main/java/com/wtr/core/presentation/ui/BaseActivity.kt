@@ -4,12 +4,20 @@ import android.os.Bundle
 import com.arellomobile.mvp.MvpAppCompatActivity
 
 abstract class BaseActivity : MvpAppCompatActivity() {
-    abstract var layoutResId: Int?
+    abstract var layoutResId: Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        inject()
         super.onCreate(savedInstanceState)
-        layoutResId?.let {
-            setContentView(it)
-        }
+        setContentView(layoutResId)
+        renderView()
+    }
+
+    protected open fun inject() {
+
+    }
+
+    protected open fun renderView() {
+
     }
 }
