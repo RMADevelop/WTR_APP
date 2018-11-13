@@ -37,8 +37,9 @@ dependencies {
     api dependency.reactiveX.rxJava
     api dependency.reactiveX.rxAndroid
 
-    api dependency.dagger.dagger
-    kapt dependency.dagger.daggerProcessor
+    api dependency.google.location
+    api dependency.google.dagger
+    kapt dependency.google.daggerProcessor
 
     api dependency.square.retrofit
     api dependency.square.converterJson

@@ -6,8 +6,9 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import ru.terrakok.cicerone.android.SupportAppNavigator
+import javax.inject.Inject
 
-class AppNavigator(
+class AppNavigator @Inject constructor(
         val fragmentActivity: FragmentActivity,
         val fragmentManager: FragmentManager,
         val containerId: Int
