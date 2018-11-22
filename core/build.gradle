@@ -38,6 +38,7 @@ dependencies {
     api dependency.reactiveX.rxAndroid
 
     api dependency.google.location
+    api dependency.google.map
     api dependency.google.dagger
     kapt dependency.google.daggerProcessor
 

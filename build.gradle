@@ -6,20 +6,20 @@ buildscript {
     ext.versions = [
             'applicationId' : "com.wtr.wtr_app",
             'minSdk'        : 19,
-            'compileSdk'    : 28,
-            'targetSdk'     : 28,
+            'compileSdk'    : 27,
+            'targetSdk'     : 27,
 
             'versionCode'   : 1,
             'versionName'   : '100',
 
 
-            'support'       : '28.0.0',
+            'support'       : '27.1.1',
             'constraint'    : '1.1.3',
 
             'androidPlugin' : '3.1.3',
             'rxJava'        : '2.2.2',
             'rxAndroid'     : '2.1.0',
-            'location'      : '15.0.1',
+            'play_services' : '16.0.0',
             'dagger'        : '2.12',
             'cicerone'      : '3.0.0',
             'glide'         : '4.7.1',
@@ -47,7 +47,8 @@ buildscript {
                     'rxAndroid': "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}"
             ],
             google       : [
-                    'location'       : "com.google.android.gms:play-services-location:${versions.location}",
+                    'map'            : "com.google.android.gms:play-services-maps:${versions.play_services}",
+                    'location'       : "com.google.android.gms:play-services-location:${versions.play_services}",
                     'dagger'         : "com.google.dagger:dagger:${versions.dagger}",
                     'daggerProcessor': "com.google.dagger:dagger-compiler:${versions.dagger}",
             ],

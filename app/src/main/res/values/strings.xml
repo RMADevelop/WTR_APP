@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">WTR_APP</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
