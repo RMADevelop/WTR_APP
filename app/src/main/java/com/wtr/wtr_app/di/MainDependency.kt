@@ -2,6 +2,7 @@ package com.wtr.wtr_app.di
 
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
+import com.tbruyelle.rxpermissions2.RxPermissions
 import com.wtr.core.di.scopes.ActivityScope
 import com.wtr.wtr_app.ui.AppNavigator
 import com.wtr.wtr_app.ui.activity.MainActivity
@@ -19,6 +20,7 @@ interface MainComponent {
 
     fun inject(mainActivity: MainActivity)
 
+    fun plusSplashComponent(): SplashComponent
 
     @Subcomponent.Builder
     interface Builder {
@@ -42,4 +44,8 @@ class MainModule {
     @Provides
     @ActivityScope
     fun provideNavigator(appNavigator: AppNavigator): Navigator = appNavigator
+
+    @Provides
+    @ActivityScope
+    fun provideRxPermissions(fragmentActivity: FragmentActivity): RxPermissions = RxPermissions(fragmentActivity)
 }

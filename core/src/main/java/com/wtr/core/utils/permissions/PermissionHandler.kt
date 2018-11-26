@@ -6,7 +6,7 @@ import io.reactivex.Observable
 import javax.inject.Inject
 
 class PermissionHandler @Inject constructor(
-        val rxPermissions: RxPermissions
+        private val rxPermissions: RxPermissions
 ) {
     fun requestPermission(vararg permissions: String): Observable<Permission> =
             rxPermissions.requestEach(*permissions)

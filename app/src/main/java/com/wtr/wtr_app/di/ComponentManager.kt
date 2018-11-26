@@ -25,7 +25,6 @@ object ComponentManager {
         return mainComponent
     }
 
-    fun injectSplash() {
-
-    }
+    fun injectSplashPresenter() =
+            mainComponent.plusSplashComponent().presenter()
 }

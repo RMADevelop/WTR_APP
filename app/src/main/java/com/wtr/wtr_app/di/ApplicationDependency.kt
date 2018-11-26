@@ -1,5 +1,9 @@
 package com.wtr.wtr_app.di
 
+import android.content.Context
+import android.net.ConnectivityManager
+import com.wtr.core.data.connection.ConnectionDefaultProvider
+import com.wtr.core.data.connection.ConnectionProvider
 import com.wtr.core.di.modules.NavigationModule
 import com.wtr.wtr_app.app.App
 import dagger.BindsInstance
@@ -34,5 +38,14 @@ class ApplicationModule {
     @Singleton
     @Provides
     fun provideContext(app: App) = app.baseContext
+
+    @Singleton
+    @Provides
+    fun provideConnectivityManager(context: Context): ConnectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+    @Singleton
+    @Provides
+    fun provideConnectionProvider(connectionDefaultProvider: ConnectionDefaultProvider): ConnectionProvider = connectionDefaultProvider
 }
 
