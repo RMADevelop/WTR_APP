@@ -38,9 +38,9 @@ class RxFusedLocationSingle(
 ) : SingleOnSubscribe<Location> {
 
     companion object {
-        fun create(client: FusedLocationProviderClient) {
-            Single.defer { Single.create(RxFusedLocationSingle(client)) }
-        }
+        fun create(client: FusedLocationProviderClient) =
+                Single.defer { Single.create(RxFusedLocationSingle(client)) }
+
     }
 
     @SuppressLint("MissingPermission")

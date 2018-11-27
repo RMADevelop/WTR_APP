@@ -5,6 +5,7 @@ import com.wtr.core.data.connection.ConnectionProvider
 import com.wtr.core.data.connection.ConnectionState
 import com.wtr.core.presentation.mvp.BasePresenter
 import com.wtr.core.utils.permissions.PermissionHandler
+import com.wtr.wtr_app.data.geo.model.LocationState
 import com.wtr.wtr_app.domain.interactor.splash.SplashInteractor
 import ru.terrakok.cicerone.Router
 import javax.inject.Inject
@@ -21,16 +22,13 @@ class SplashPresenter @Inject constructor(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        connectionProvider.connection()
-                .doOnSuccess { splashState.copy(connectionState = if (it) ConnectionState.Connect else ConnectionState.Disconnect) }
+        connectionProvider.observeConnection()
+                .doOnNext { splashState.copy(connectionState = if (it) ConnectionState.Connect else ConnectionState.Disconnect) }
+    splashInteractor.location()
     }
 }
 
 data class SplashState(
-        val connectionState: ConnectionState = ConnectionState.Unknown
+        val connectionState: ConnectionState = ConnectionState.Unknown,
+        val locationState: LocationState = LocationState.Unknow
 )
-
-sealed class LocationState {
-    object Failed : LocationState()
-    object Succes : LocationState()
-}
