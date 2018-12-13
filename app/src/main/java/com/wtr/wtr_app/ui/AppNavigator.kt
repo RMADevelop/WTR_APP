@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import com.wtr.wtr_app.app.Screens
 import com.wtr.wtr_app.ui.components.splash.SplashFragment
+import com.wtr.wtr_app.ui.components.weather.WeatherFragment
 import ru.terrakok.cicerone.android.SupportAppNavigator
 import javax.inject.Inject
 
@@ -15,13 +16,13 @@ class AppNavigator @Inject constructor(
         fragmentManager: FragmentManager,
         containerId: Int
 ) : SupportAppNavigator(fragmentActivity, fragmentManager, containerId) {
-    override fun createActivityIntent(context: Context?, screenKey: String?, data: Any?): Intent {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun createActivityIntent(context: Context?, screenKey: String?, data: Any?): Intent? =
+          null
 
-    override fun createFragment(screenKey: String?, data: Any?): Fragment =
-            when (screenKey) {
-                Screens.SPLASH_SCREEN_KEY -> SplashFragment.newInstance()
-                else -> throw IllegalArgumentException("Cannot create fragment with this key: $screenKey")
-            }
+    override fun createFragment(screenKey: String?, data: Any?): Fragment {
+        return when (screenKey) {
+            Screens.SPLASH_SCREEN_KEY -> WeatherFragment.newInstance()
+            else -> throw IllegalArgumentException("Cannot create fragment with this key: $screenKey")
+        }
+    }
 }

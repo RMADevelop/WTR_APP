@@ -8,9 +8,11 @@ import com.wtr.wtr_app.di.ComponentManager
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import javax.inject.Inject
-import javax.inject.Provider
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), MainView<MainState> {
+    override fun render(state: MainState) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     @Inject
     lateinit var appNavigator: Navigator
@@ -19,18 +21,16 @@ class MainActivity : BaseActivity() {
     lateinit var navigatorHolder: NavigatorHolder
 
     @Inject
-    lateinit var presenterProvider: Provider<MainPresenter>
+
 
     @InjectPresenter
     lateinit var presenter: MainPresenter
 
     @ProvidePresenter
     fun providePresenter() =
-            presenterProvider.get()
+            presenter
 
-    override
-
-    var layoutResId: Int =
+    override var layoutResId: Int =
             R.layout.activity_main
 
     override fun inject() {
@@ -45,8 +45,8 @@ class MainActivity : BaseActivity() {
 
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onResumeFragments() {
+        super.onResumeFragments()
         navigatorHolder.setNavigator(appNavigator)
     }
 

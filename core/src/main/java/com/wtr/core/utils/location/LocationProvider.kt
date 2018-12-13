@@ -2,16 +2,14 @@ package com.wtr.core.utils.location
 
 import android.annotation.SuppressLint
 import android.location.Location
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.*
+import com.wtr.core.domain.NoLastKnownLocation
 import io.reactivex.*
 import io.reactivex.disposables.Disposables
 
 class RxFusedLocationProvider(
-        val client: FusedLocationProviderClient,
-        val request: LocationRequest
+        private val client: FusedLocationProviderClient,
+        private val request: LocationRequest
 ) : ObservableOnSubscribe<Location> {
 
     companion object {
@@ -24,11 +22,12 @@ class RxFusedLocationProvider(
         val callback = Callback(emitter)
         emitter.setDisposable(Disposables.fromRunnable { client.removeLocationUpdates(callback) })
         client.requestLocationUpdates(request, callback, null)
+        client.flushLocations()
     }
 
-    class Callback(val emitter: ObservableEmitter<Location>) : LocationCallback() {
+    class Callback(private val emitter: ObservableEmitter<Location>) : LocationCallback() {
         override fun onLocationResult(locationResult: LocationResult) {
-            locationResult.lastLocation?.let { emitter.onNext(it) }
+            locationResult.lastLocation?.let { emitter.onNext(Location(it)) }
         }
     }
 }
@@ -46,8 +45,8 @@ class RxFusedLocationSingle(
     @SuppressLint("MissingPermission")
     override fun subscribe(emitter: SingleEmitter<Location>) {
         client.lastLocation.addOnSuccessListener {
-            it?.let { emitter.onSuccess(it) }
-                    ?: emitter.onError(IllegalStateException("bad location"))
+            it?.let { emitter.onSuccess(Location(it)) }
+                    ?: emitter.onError(NoLastKnownLocation())
         }.addOnFailureListener { emitter.onError(it) }
     }
 }

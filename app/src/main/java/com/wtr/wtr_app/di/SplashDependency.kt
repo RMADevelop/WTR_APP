@@ -1,8 +1,8 @@
 package com.wtr.wtr_app.di
 
 import com.wtr.core.di.scopes.FragmentScope
-import com.wtr.wtr_app.domain.interactor.splash.SplashDomainInteractor
-import com.wtr.wtr_app.domain.interactor.splash.SplashInteractor
+import com.wtr.wtr_app.domain.interactor.location.LocationDomainInteractor
+import com.wtr.wtr_app.domain.interactor.location.LocationInteractor
 import com.wtr.wtr_app.ui.components.splash.SplashFragment
 import com.wtr.wtr_app.ui.components.splash.SplashPresenter
 import dagger.Module
@@ -23,5 +23,5 @@ class SplashModule() {
 
     @FragmentScope
     @Provides
-    fun provideInteractor(splashDomainInteractor: SplashDomainInteractor): SplashInteractor = splashDomainInteractor
+    fun provideInteractor(splashDomainInteractor: LocationDomainInteractor): LocationInteractor = splashDomainInteractor
 }

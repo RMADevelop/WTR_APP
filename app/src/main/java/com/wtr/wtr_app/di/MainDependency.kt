@@ -4,6 +4,8 @@ import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.wtr.core.di.scopes.ActivityScope
+import com.wtr.wtr_app.data.geo.LocationDataRepository
+import com.wtr.wtr_app.data.geo.LocationRepository
 import com.wtr.wtr_app.ui.AppNavigator
 import com.wtr.wtr_app.ui.activity.MainActivity
 import dagger.BindsInstance
@@ -21,6 +23,8 @@ interface MainComponent {
     fun inject(mainActivity: MainActivity)
 
     fun plusSplashComponent(): SplashComponent
+
+    fun plusWeatherComponent(): WeatherComponent
 
     @Subcomponent.Builder
     interface Builder {
@@ -48,4 +52,8 @@ class MainModule {
     @Provides
     @ActivityScope
     fun provideRxPermissions(fragmentActivity: FragmentActivity): RxPermissions = RxPermissions(fragmentActivity)
+
+    @Provides
+    @ActivityScope
+    fun provideLocationRepository(locationDataRepository: LocationDataRepository): LocationRepository = locationDataRepository
 }

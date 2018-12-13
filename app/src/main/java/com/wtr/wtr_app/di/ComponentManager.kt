@@ -27,4 +27,7 @@ object ComponentManager {
 
     fun injectSplashPresenter() =
             mainComponent.plusSplashComponent().presenter()
+
+    fun injectWeatherPresenter() =
+            mainComponent.plusWeatherComponent().presenter()
 }

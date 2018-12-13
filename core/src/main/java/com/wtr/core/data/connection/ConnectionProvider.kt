@@ -37,8 +37,9 @@ class ConnectionDefaultProvider @Inject constructor(
         subject.onNext(checkStatus())
     }
 
-    fun checkStatus() = with(connectivityManager.activeNetworkInfo) {
-        return@with isConnectedOrConnecting
+    fun checkStatus(): Boolean {
+        val netInfo = connectivityManager.activeNetworkInfo
+        return netInfo != null && netInfo.isConnectedOrConnecting
     }
 
 
