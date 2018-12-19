@@ -15,7 +15,7 @@ open class BaseMapView : MapView, OnMapReadyCallback {
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
-    var map: GoogleMap? = null
+    lateinit var map: GoogleMap
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap

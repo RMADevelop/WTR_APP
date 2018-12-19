@@ -21,7 +21,5 @@ interface SplashComponent {
 @Module
 class SplashModule() {
 
-    @FragmentScope
-    @Provides
-    fun provideInteractor(splashDomainInteractor: LocationDomainInteractor): LocationInteractor = splashDomainInteractor
+
 }

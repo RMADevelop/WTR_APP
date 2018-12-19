@@ -21,8 +21,6 @@ class MainActivity : BaseActivity(), MainView<MainState> {
     lateinit var navigatorHolder: NavigatorHolder
 
     @Inject
-
-
     @InjectPresenter
     lateinit var presenter: MainPresenter
 

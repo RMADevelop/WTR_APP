@@ -2,17 +2,15 @@ package com.wtr.wtr_app.ui.components.weather
 
 import com.wtr.core.data.connection.ConnectionProvider
 import com.wtr.core.data.connection.ConnectionState
-import com.wtr.core.data.entity.Location
 import com.wtr.core.presentation.mvp.BasePresenter
 import com.wtr.core.presentation.state.PrimaryState
 import com.wtr.core.presentation.state.ViewState
-import com.wtr.wtr_app.domain.interactor.location.LocationInteractor
 import com.wtr.wtr_app.domain.interactor.weather.WeatherInteractor
+import com.wtr.wtr_app.ui.components.weather.model.LocationPresentation
 import javax.inject.Inject
 
 class WeatherPresenter @Inject constructor(
-        val weatherInteractor: WeatherInteractor,
-        val locationInteractor: LocationInteractor,
+        private val weatherInteractor: WeatherInteractor,
         connectionProvider: ConnectionProvider
 ) : BasePresenter<WeatherViewState, WeatherView>(connectionProvider) {
 
@@ -21,12 +19,12 @@ class WeatherPresenter @Inject constructor(
     override fun processConnectionState(state: Boolean) {
     }
 
-    fun processStart(location: Location?) {
-        location?.let { loadWeather(it) } ?: openBottom()
+    fun processLocation(location: LocationPresentation) {
+        weatherInteractor.loadWeather(location.latitude, location.longitude)
     }
 
-    private fun loadWeather(location: Location) {
-
+    fun emptyStart() {
+        openBottom()
     }
 
     private fun openBottom() {

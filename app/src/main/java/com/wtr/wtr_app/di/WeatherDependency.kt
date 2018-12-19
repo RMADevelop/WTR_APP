@@ -27,4 +27,5 @@ class WeatherModule {
     @FragmentScope
     fun provideWeatherInteractor(weatherInteractor: WeatherDomainInteractor)
             : WeatherInteractor = weatherInteractor
+
 }

@@ -4,4 +4,9 @@ import javax.inject.Inject
 
 class WeatherDomainInteractor @Inject constructor(
 
-) : WeatherInteractor
+) : WeatherInteractor {
+    override fun loadWeather(lat: Double, lon: Double) {
+
+    }
+
+}
