@@ -9,8 +9,8 @@ import com.wtr.wtr_app.data.geo.LocationDataRepository
 import com.wtr.wtr_app.data.geo.LocationRepository
 import com.wtr.wtr_app.domain.interactor.location.LocationDomainInteractor
 import com.wtr.wtr_app.domain.interactor.location.LocationInteractor
-import com.wtr.wtr_app.ui.AppNavigator
-import com.wtr.wtr_app.ui.activity.MainActivity
+import com.wtr.wtr_app.presentation.AppNavigator
+import com.wtr.wtr_app.presentation.activity.MainActivity
 import dagger.BindsInstance
 import dagger.Module
 import dagger.Provides
@@ -49,7 +49,6 @@ interface MainComponent {
 class MainModule {
 
     @Provides
-    @ActivityScope
     fun provideNavigator(appNavigator: AppNavigator): Navigator = appNavigator
 
     @Provides

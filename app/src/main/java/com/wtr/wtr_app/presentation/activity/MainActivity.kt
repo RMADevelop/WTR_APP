@@ -1,4 +1,4 @@
-package com.wtr.wtr_app.ui.activity
+package com.wtr.wtr_app.presentation.activity
 
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter

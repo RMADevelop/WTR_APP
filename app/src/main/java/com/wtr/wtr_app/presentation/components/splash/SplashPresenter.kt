@@ -1,4 +1,4 @@
-package com.wtr.wtr_app.ui.components.splash
+package com.wtr.wtr_app.presentation.components.splash
 
 import android.Manifest
 import android.util.Log

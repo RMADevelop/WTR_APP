@@ -6,6 +6,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
 
 open class BaseMapView : MapView, OnMapReadyCallback {
 
@@ -15,7 +16,8 @@ open class BaseMapView : MapView, OnMapReadyCallback {
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
-    lateinit var map: GoogleMap
+    var map: GoogleMap? = null
+    var onReadyMapTaskExecutor: OnReadyMapTaskExecutor? = null
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
@@ -24,4 +26,17 @@ open class BaseMapView : MapView, OnMapReadyCallback {
     fun zoomIn() = map?.animateCamera(CameraUpdateFactory.zoomIn())
 
     fun zoomOut() = map?.animateCamera(CameraUpdateFactory.zoomOut())
+
+    fun setLocation(lat: Double, lon: Double) {
+        map?.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(lat, lon), 5.0f))
+      /*  ?: {onReadyMapTaskExecutor = OnReadyMapTaskExecutor()}*/
+    }
+
+    inner class OnReadyMapTaskExecutor {
+
+        fun executeLocation(map: GoogleMap, lat: Double, lon: Double) {
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(lat, lon), 5.0f))
+        }
+    }
 }
+

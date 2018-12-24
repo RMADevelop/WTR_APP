@@ -3,8 +3,8 @@ package com.wtr.wtr_app.di
 import com.wtr.core.di.scopes.FragmentScope
 import com.wtr.wtr_app.domain.interactor.weather.WeatherDomainInteractor
 import com.wtr.wtr_app.domain.interactor.weather.WeatherInteractor
-import com.wtr.wtr_app.ui.components.weather.WeatherFragment
-import com.wtr.wtr_app.ui.components.weather.WeatherPresenter
+import com.wtr.wtr_app.presentation.components.weather.WeatherFragment
+import com.wtr.wtr_app.presentation.components.weather.WeatherPresenter
 import dagger.Module
 import dagger.Provides
 import dagger.Subcomponent

@@ -1,4 +1,4 @@
-package com.wtr.wtr_app.ui.activity
+package com.wtr.wtr_app.presentation.activity
 
 import com.arellomobile.mvp.InjectViewState
 import com.wtr.core.data.connection.ConnectionProvider

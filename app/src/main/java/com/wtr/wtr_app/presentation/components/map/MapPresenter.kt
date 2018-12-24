@@ -1,4 +1,4 @@
-package com.wtr.wtr_app.ui.components.map
+package com.wtr.wtr_app.presentation.components.map
 
 import com.wtr.core.data.connection.ConnectionProvider
 import com.wtr.core.presentation.mvp.BasePresenter

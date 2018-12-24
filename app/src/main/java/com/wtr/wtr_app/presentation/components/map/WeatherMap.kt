@@ -1,4 +1,4 @@
-package com.wtr.wtr_app.ui.components.map
+package com.wtr.wtr_app.presentation.components.map
 
 import android.content.Context
 import android.util.AttributeSet

@@ -1,7 +1,7 @@
-package com.wtr.wtr_app.ui.components.map
+package com.wtr.wtr_app.presentation.activity
 
 import com.wtr.core.presentation.mvp.BaseView
 import com.wtr.core.presentation.state.ViewState
 
-interface MapView<VS : ViewState> : BaseView<VS> {
+interface MainView<VS:ViewState> : BaseView<VS> {
 }

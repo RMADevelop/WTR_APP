@@ -1,4 +1,4 @@
-package com.wtr.wtr_app.ui.components.bottom
+package com.wtr.wtr_app.presentation.components.bottom
 
 import com.wtr.core.presentation.ui.BaseFragment
 import com.wtr.wtr_app.R
